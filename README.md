@@ -315,7 +315,7 @@ Os perfis dos integrantes podem ser adicionados abaixo para facilitar a avaliaç
 * **Marcelo Saraiva:** [GitHub](https://github.com/marceloUTI) | [LinkedIn]([linkedin.com/in/marcelo-expedito-b2597834b](https://www.linkedin.com/in/marcelo-expedito-b2597834b/))
 * **Marcelo Bento da Luz:** [GitHub](https://github.com/marcelooluz) | [LinkedIn](https://www.linkedin.com/in/marcelo-bento-da-luz-8600813bb/)
 * **Eduardo Ducca de Melo:** [GitHub](https://github.com/duccatheone) | [LinkedIn](https://www.linkedin.com/in/eduardo-ducca2/)
-* **Quinto integrante:** [GitHub] | [LinkedIn]
+* **Hemanuel Rulyo Dos Santos Antunes:** [GitHub](https://github.com/Hemanuel10) | [LinkedIn](https://www.linkedin.com/in/hemanuel-antunes)
 
 ---
 
@@ -403,7 +403,7 @@ Nosso objetivo é continuar desenvolvendo nossas habilidades técnicas e profiss
 **Marcelo Saraiva**
 **Marcelo Bento da Luz**
 **Eduardo Ducca de Melo**
-**[Quinto Integrante]**
+**Hemanuel Rulyo Dos Santos Antunes**
 
 ---
 
