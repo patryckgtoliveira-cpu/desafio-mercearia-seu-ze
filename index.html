@@ -62,7 +62,7 @@
 
             <!-- Actions (Cart & WhatsApp) -->
             <div class="flex items-center gap-3">
-                <button onclick="toggleCartModal()" class="relative bg-amber-100 text-brand-900 p-2.5 rounded-xl hover:bg-amber-200 transition" title="Ver Lista de Pedidos">
+                <button data-action="toggle-cart" class="relative bg-amber-100 text-brand-900 p-2.5 rounded-xl hover:bg-amber-200 transition" title="Ver Lista de Pedidos">
                     <i class="fa-solid fa-basket-shopping text-lg"></i>
                     <span id="cart-count" class="absolute -top-1.5 -right-1.5 bg-rustic-red text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
                 </button>
@@ -124,7 +124,7 @@
                         <div class="relative mx-auto max-w-md lg:max-w-none">
                             <div class="absolute -inset-2 bg-gradient-to-r from-amber-400 to-brand-600 rounded-3xl blur-lg opacity-30"></div>
                             <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white">
-                                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Pães e Queijos Frescos" class="w-full h-80 sm:h-96 object-cover object-center" onerror="this.src='https://placehold.co/800x600/92400e/ffffff?text=Mercearia+do+Seu+Ze'">
+                                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Pães e Queijos Frescos" class="w-full h-80 sm:h-96 object-cover object-center" data-fallback="https://placehold.co/800x600/92400e/ffffff?text=Mercearia+do+Seu+Ze">
                                 
                                 <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
                                     <span class="bg-rustic-red text-white text-xs uppercase px-2.5 py-1 rounded font-bold tracking-wider mb-2 inline-block">Destaque da Casa</span>
@@ -180,30 +180,30 @@
                         <!-- Search input -->
                         <div class="relative flex-grow sm:w-64">
                             <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-stone-400"></i>
-                            <input type="text" id="search-input" oninput="filterProducts()" placeholder="Buscar pão, queijo, bolo..." class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white text-sm">
+                            <input type="text" id="search-input" placeholder="Buscar pão, queijo, bolo..." class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white text-sm">
                         </div>
                     </div>
                 </div>
 
                 <!-- Category Filter Pills -->
                 <div class="flex gap-2 overflow-x-auto pb-4 mb-8 hide-scrollbar" id="category-filters">
-                    <button onclick="setCategory('all')" class="cat-btn active bg-brand-600 text-white px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap shadow-sm transition">
+                    <button data-action="set-category" data-category="all" class="cat-btn px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap border transition">
                         Todos os Produtos
                     </button>
-                    <button onclick="setCategory('paes')" class="cat-btn bg-white text-stone-700 hover:bg-amber-100 px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap border border-stone-200 transition">
-                         Pães & Broas
+                    <button data-action="set-category" data-category="paes" class="cat-btn px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap border transition">
+                        Pães & Broas
                     </button>
-                    <button onclick="setCategory('frios')" class="cat-btn bg-white text-stone-700 hover:bg-amber-100 px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap border border-stone-200 transition">
-                         Queijos & Frios
+                    <button data-action="set-category" data-category="frios" class="cat-btn px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap border transition">
+                        Queijos & Frios
                     </button>
-                    <button onclick="setCategory('bolos')" class="cat-btn bg-white text-stone-700 hover:bg-amber-100 px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap border border-stone-200 transition">
-                         Bolos & Doces
+                    <button data-action="set-category" data-category="bolos" class="cat-btn px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap border transition">
+                        Bolos & Doces
                     </button>
-                    <button onclick="setCategory('salgados')" class="cat-btn bg-white text-stone-700 hover:bg-amber-100 px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap border border-stone-200 transition">
-                         Salgados & Combos
+                    <button data-action="set-category" data-category="salgados" class="cat-btn px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap border transition">
+                        Salgados & Combos
                     </button>
-                    <button onclick="setCategory('bebidas')" class="cat-btn bg-white text-stone-700 hover:bg-amber-100 px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap border border-stone-200 transition">
-                         Bebidas & Vinhos
+                    <button data-action="set-category" data-category="bebidas" class="cat-btn px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap border transition">
+                        Bebidas & Vinhos
                     </button>
                 </div>
 
@@ -222,7 +222,7 @@
                     
                     <div class="relative">
                         <div class="rounded-2xl overflow-hidden shadow-xl border-4 border-amber-100">
-                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Fachada e balcão aconchegante da mercearia" class="w-full h-96 object-cover" onerror="this.src='https://placehold.co/800x600/78350f/ffffff?text=Mercearia+do+Seu+Ze'">
+                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Fachada e balcão aconchegante da mercearia" class="w-full h-96 object-cover" data-fallback="https://placehold.co/800x600/78350f/ffffff?text=Mercearia+do+Seu+Ze">
                         </div>
                         <div class="absolute -bottom-6 -right-6 bg-brand-900 text-amber-100 p-6 rounded-2xl shadow-xl hidden sm:block max-w-xs border border-brand-700">
                             <p class="font-serif italic text-sm">"Atender bem é saber o nome do cliente e como ele gosta do café."</p>
@@ -383,8 +383,8 @@
                 </div>
 
                 <div>
-                    <h4 class="font-bold text-white text-sm mb-3">Contato Directo</h4>
-                    <a href="https://wa.me/5541999999999" target="_blank" class="inline-flex items-center gap-2 text-xs bg-emerald-700 hover:bg-emerald-600 text-white px-3 py-2 rounded-lg transition font-medium">
+                    <h4 class="font-bold text-white text-sm mb-3">Contato Direto</h4>
+                    <a href="https://wa.me/5541999999999" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs bg-emerald-700 hover:bg-emerald-600 text-white px-3 py-2 rounded-lg transition font-medium">
                         <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Seu Zé
                     </a>
                 </div>
@@ -400,7 +400,7 @@
     <!-- Cart / WhatsApp Drawer Modal -->
     <div id="cart-modal" class="fixed inset-0 z-50 hidden transition-opacity">
         <!-- Backdrop -->
-        <div onclick="toggleCartModal()" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+        <div data-action="toggle-cart" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
 
         <!-- Drawer Content -->
         <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-rustic-cream shadow-2xl flex flex-col justify-between border-l border-amber-200">
@@ -411,7 +411,7 @@
                     <i class="fa-solid fa-basket-shopping text-amber-400"></i>
                     <h3 class="font-serif font-bold text-lg">Sua Lista para o Seu Zé</h3>
                 </div>
-                <button onclick="toggleCartModal()" class="text-amber-200 hover:text-white p-1">
+                <button data-action="toggle-cart" aria-label="Fechar lista" class="text-amber-200 hover:text-white p-1">
                     <i class="fa-solid fa-xmark text-xl"></i>
                 </button>
             </div>
@@ -430,7 +430,7 @@
                 <p class="text-xs text-stone-500">
                     *Envie seu pedido pelo WhatsApp. O Seu Zé confirmará a disponibilidade e o valor final para entrega/retirada.
                 </p>
-                <button id="send-whatsapp-btn" onclick="sendOrderWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg flex items-center justify-center gap-2 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                <button id="send-whatsapp-btn" data-action="send-order" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg flex items-center justify-center gap-2 transition disabled:opacity-50 disabled:cursor-not-allowed">
                     <i class="fa-brands fa-whatsapp text-xl"></i> Enviar Pedido via WhatsApp
                 </button>
             </div>
@@ -444,6 +444,7 @@
         <span id="toast-message">Item adicionado com sucesso!</span>
     </div>
 
+    <script src="js/data.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
