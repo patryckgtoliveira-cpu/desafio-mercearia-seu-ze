@@ -311,8 +311,8 @@ Perfil autodidata, com interesse em programação, bancos de dados, desenvolvime
 
 Os perfis dos integrantes podem ser adicionados abaixo para facilitar a avaliação da equipe:
 
-* **Patryck Geovany Tavares de Oliveira:** [GitHub https://github.com/patryckgtoliveira-cpu] | [LinkedIn https://www.linkedin.com/in/patryck-geovany-tavares-de-oliveira-0b32902b2/]
-* **Marcelo Saraiva:** [GitHub](https://github.com/marceloUTI) | [LinkedIn]([linkedin.com/in/marcelo-expedito-b2597834b](https://www.linkedin.com/in/marcelo-expedito-b2597834b/))
+* **Patryck Geovany Tavares de Oliveira:** [GitHub](https://github.com/patryckgtoliveira-cpu) | [LinkedIn](https://www.linkedin.com/in/patryck-geovany-tavares-de-oliveira-0b32902b2/)
+* **Marcelo Saraiva:** [GitHub](https://github.com/marceloUTI) | [LinkedIn]([linkedin.com/in/marcelo-expedito-b2597834b])
 * **Marcelo Bento da Luz:** [GitHub](https://github.com/marcelooluz) | [LinkedIn](https://www.linkedin.com/in/marcelo-bento-da-luz-8600813bb/)
 * **Eduardo Ducca de Melo:** [GitHub](https://github.com/duccatheone) | [LinkedIn](https://www.linkedin.com/in/eduardo-ducca2/)
 * **Hemanuel Rulyo Dos Santos Antunes:** [GitHub](https://github.com/Hemanuel10) | [LinkedIn](https://www.linkedin.com/in/hemanuel-antunes)
