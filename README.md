@@ -292,29 +292,29 @@ Perfil autodidata, com interesse em programação, bancos de dados, desenvolvime
 
 **Formação:**
 
-* Tecnologia em Análise e Desenvolvimento de Sistemas (ADS) — cursando o 2º período[cite: 1];
-* Ensino Médio — concluído[cite: 1].
+* Tecnologia em Análise e Desenvolvimento de Sistemas (ADS) — cursando o 2º período;
+* Ensino Médio — concluído.
 
 **Cursos e qualificações:**
 
-* Certificado de Piloto Privado — Aeroclube do Paraná (2018)[cite: 1].
+* Certificado de Piloto Privado — Aeroclube do Paraná (2018).
 
 **Competências técnicas:**
 
-* Testes Manuais e QA[cite: 1];
-* Noções de HTML, CSS e JavaScript[cite: 1];
-* Pacote Office[cite: 1];
-* Inglês Básico[cite: 1].
+* Testes Manuais e QA;
+* Noções de HTML, CSS e JavaScript;
+* Pacote Office;
+* Inglês Básico.
 
 **Experiência:**
 
-Atuação como Auxiliar de Teste na Logcomex (2019-2023), com foco na execução de testes manuais, validação de novas funcionalidades e documentação/reporte de bugs[cite: 1]. Experiência em trabalho colaborativo com times de produto e desenvolvimento[cite: 1].
+Atuação como Auxiliar de Teste na Logcomex (2019-2023), com foco na execução de testes manuais, validação de novas funcionalidades e documentação/reporte de bugs. Experiência em trabalho colaborativo com times de produto e desenvolvimento.
 
-Também possui experiência como Recepcionista no Hotel Golden Park Curitiba, atuando no atendimento presencial e telefônico, resolução de demandas e suporte geral à equipe[cite: 1].
+Também possui experiência como Recepcionista no Hotel Golden Park Curitiba, atuando no atendimento presencial e telefônico, resolução de demandas e suporte geral à equipe.
 
 **Perfil profissional:**
 
-Profissional organizado, comunicativo e com alta atenção a detalhes, habilidade que foi desenvolvida durante sua formação de Piloto Privado[cite: 1]. Com background em testes de software e atendimento ao cliente, busca atualmente oportunidades na área de Tecnologia / ADS[cite: 1].
+Profissional organizado, comunicativo e com alta atenção a detalhes, habilidade que foi desenvolvida durante sua formação de Piloto Privado. Com background em testes de software e atendimento ao cliente, busca atualmente oportunidades na área de Tecnologia / ADS.
 
 ---
 
