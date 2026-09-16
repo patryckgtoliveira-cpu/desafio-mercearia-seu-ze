@@ -314,7 +314,7 @@ Os perfis dos integrantes podem ser adicionados abaixo para facilitar a avaliaç
 * **Patryck Geovany Tavares de Oliveira:** [GitHub] | [LinkedIn]
 * **Marcelo Saraiva:** [GitHub] | [LinkedIn]
 * **Marcelo Bento da Luz:** [GitHub](https://github.com/marcelooluz) | [LinkedIn]
-* **Eduardo Ducca de Melo:** [GitHub](https://github.com/duccatheone) | [LinkedIn]
+* **Eduardo Ducca de Melo:** [GitHub](https://github.com/duccatheone) | [LinkedIn](https://www.linkedin.com/in/eduardo-ducca2/)
 * **Quinto integrante:** [GitHub] | [LinkedIn]
 
 ---
@@ -394,36 +394,6 @@ A equipe é formada por estudantes de Análise e Desenvolvimento de Sistemas que
 O projeto representa uma oportunidade de aplicar conhecimentos adquiridos durante a formação acadêmica em uma situação prática, trabalhando em equipe para transformar uma necessidade de negócio em uma solução digital funcional.
 
 Nosso objetivo é continuar desenvolvendo nossas habilidades técnicas e profissionais, buscando aprender com cada projeto e construir soluções que sejam úteis, acessíveis e alinhadas às necessidades dos usuários.
-
----
-
-# 🔀 Versionamento
-
-O projeto utiliza **Git e GitHub** para controle e organização do desenvolvimento.
-
-Os integrantes trabalham em um repositório compartilhado, mantendo o código do projeto na branch principal `main`.
-
-Os commits devem ser realizados de forma organizada, utilizando mensagens que descrevam as alterações realizadas.
-
-Exemplos:
-
-```text
-feat: adiciona estrutura inicial da página
-feat: adiciona catálogo de produtos
-feat: implementa filtro por categoria
-feat: adiciona lista de pedidos
-fix: corrige cálculo do total
-style: ajusta responsividade da página
-docs: atualiza README
-```
-
----
-
-# 📚 Contexto Acadêmico
-
-Projeto desenvolvido como atividade acadêmica do curso de **Análise e Desenvolvimento de Sistemas**, tendo como base o estudo de caso da **Mercearia do Seu Zé**.
-
-O projeto contempla etapas de definição de objetivo, identificação do público-alvo, arquitetura da informação, prototipagem, desenvolvimento em HTML5 e utilização de Git/GitHub para versionamento.
 
 ---
 
