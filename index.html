@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercearia do Seu Zé | Pães, Frios e Delícias no Centro de Curitiba</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            500: '#d97706',
+                            600: '#b45309',
+                            700: '#92400e',
+                            800: '#78350f',
+                            900: '#451a03',
+                        },
+                        rustic: {
+                            red: '#991b1b',
+                            green: '#15803d',
+                            cream: '#fdfbf7',
+                            dark: '#292524'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #fdfbf7; }
+        .font-serif { font-family: 'Merriweather', serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-stone-800 antialiased bg-rustic-cream min-h-screen flex flex-col justify-between">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-brand-900 text-amber-100 text-xs md:text-sm py-2 px-4">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-location-dot text-amber-400"></i>
+                <span>Centro de Curitiba - PR | Atendimento caloroso de bairro</span>
+            </div>
+            <div class="flex items-center gap-4 text-xs">
+                <span id="status-badge" class="inline-flex items-center px-2 py-0.5 rounded-full font-medium">
+                    <!-- JS will populate status -->
+                </span>
+                <span class="hidden sm:inline"><i class="fa-regular fa-clock mr-1"></i> Seg a Sex: 8h-19h | Sáb: 8h-12h</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header / Navigation -->
+    <header class="sticky top-0 z-40 bg-rustic-cream/95 backdrop-blur-md border-b border-amber-200/60 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 bg-brand-600 rounded-full flex items-center justify-center text-white text-2xl shadow-md group-hover:bg-brand-700 transition">
+                    <i class="fa-solid fa-store"></i>
+                </div>
+                <div>
+                    <h1 class="font-serif text-xl sm:text-2xl font-bold text-brand-900 leading-tight">Mercearia do Seu Zé</h1>
+                    <p class="text-xs text-amber-800 font-medium tracking-wide">Tradição & Frescor no Centro</p>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-stone-700">
+                <a href="#promos" class="hover:text-brand-600 transition flex items-center gap-1.5 text-brand-700">
+                    <i class="fa-solid fa-tag text-xs"></i> Promoções do Dia
+                </a>
+                <a href="#produtos" class="hover:text-brand-600 transition">Nossos Produtos</a>
+                <a href="#sobre" class="hover:text-brand-600 transition">Nossa História</a>
+                <a href="#localizacao" class="hover:text-brand-600 transition">Como Chegar</a>
+            </nav>
+
+            <!-- Actions (Cart & WhatsApp) -->
+            <div class="flex items-center gap-3">
+                <button onclick="toggleCartModal()" class="relative bg-amber-100 text-brand-900 p-2.5 rounded-xl hover:bg-amber-200 transition" title="Ver Lista de Pedidos">
+                    <i class="fa-solid fa-basket-shopping text-lg"></i>
+                    <span id="cart-count" class="absolute -top-1.5 -right-1.5 bg-rustic-red text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+                </button>
+
+                <a href="https://wa.me/5541999999999?text=Olá%20Seu%20Zé!%20Gostaria%20de%20tirar%20uma%20dúvida." target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 bg-emerald-600 text-white px-4 py-2.5 rounded-xl font-medium text-sm hover:bg-emerald-700 shadow-sm transition">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Falar no WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative bg-gradient-to-b from-amber-100/70 via-rustic-cream to-rustic-cream py-12 lg:py-20 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-200/80 text-brand-900 text-xs font-bold uppercase tracking-wider">
+                            <i class="fa-solid fa-bread-slice"></i> O cheirinho de pão fresco no Centro
+                        </div>
+                        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-stone-900 leading-tight">
+                            A simplicidade e o sabor de uma <span class="text-brand-600 underline decoration-amber-400 decoration-wavy">mercearia de verdade</span>.
+                        </h2>
+                        <p class="text-stone-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0">
+                            Pães quentinhos, bolos fofinhos, frios fatiados na hora, broas artesanais e aquele atendimento com um bom papo que só o Seu Zé oferece no coração de Curitiba.
+                        </p>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+                            <a href="#promos" class="bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3.5 rounded-xl shadow-lg shadow-brand-600/20 transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-star"></i> Ver Promoções de Hoje
+                            </a>
+                            <a href="#localizacao" class="bg-white hover:bg-stone-50 border border-stone-300 text-stone-800 font-semibold px-6 py-3.5 rounded-xl transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-map-pin text-brand-600"></i> Onde Estamos no Centro
+                            </a>
+                        </div>
+
+                        <!-- Highlights list -->
+                        <div class="grid grid-cols-3 gap-2 pt-6 border-t border-amber-200/80 max-w-lg mx-auto lg:mx-0">
+                            <div class="text-center lg:text-left">
+                                <span class="block text-xl font-bold text-brand-900">100%</span>
+                                <span class="text-xs text-stone-500">Frios fatiados na hora</span>
+                            </div>
+                            <div class="text-center lg:text-left">
+                                <span class="block text-xl font-bold text-brand-900">Diário</span>
+                                <span class="text-xs text-stone-500">Pães e bolos caseiros</span>
+                            </div>
+                            <div class="text-center lg:text-left">
+                                <span class="block text-xl font-bold text-brand-900">Rápido</span>
+                                <span class="text-xs text-stone-500">Entrega via WhatsApp</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Hero Graphic / Image Showcase -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            <div class="absolute -inset-2 bg-gradient-to-r from-amber-400 to-brand-600 rounded-3xl blur-lg opacity-30"></div>
+                            <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-white">
+                                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Pães e Queijos Frescos" class="w-full h-80 sm:h-96 object-cover object-center" onerror="this.src='https://placehold.co/800x600/92400e/ffffff?text=Mercearia+do+Seu+Ze'">
+                                
+                                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-6 text-white">
+                                    <span class="bg-rustic-red text-white text-xs uppercase px-2.5 py-1 rounded font-bold tracking-wider mb-2 inline-block">Destaque da Casa</span>
+                                    <h3 class="font-serif text-xl font-bold">Queijo Colonial & Salame Hamburguês</h3>
+                                    <p class="text-xs text-amber-200 mt-1">Fatiados fininhos para o seu café da tarde especial.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Promotions Section -->
+        <section id="promos" class="py-12 bg-white border-y border-stone-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <span class="text-brand-600 font-bold text-sm uppercase tracking-wider">Economize Todo Dia</span>
+                    <h2 class="font-serif text-3xl font-bold text-stone-900 mt-1">Promoções Diárias do Seu Zé</h2>
+                    <p class="text-stone-600 text-sm mt-2">
+                        Selecione o dia da semana e confira a especialidade em oferta!
+                    </p>
+                </div>
+
+                <!-- Weekday Selector Tabs -->
+                <div class="flex justify-start md:justify-center gap-2 overflow-x-auto pb-4 hide-scrollbar" id="day-tabs">
+                    <!-- JS generated tabs -->
+                </div>
+
+                <!-- Active Promo Banner Card -->
+                <div id="promo-display" class="mt-6 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl p-6 sm:p-8 border border-amber-200 shadow-sm transition-all duration-300">
+                    <!-- Dynamic promo content populated by JS -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Product Catalog Section -->
+        <section id="produtos" class="py-16 bg-rustic-cream">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                    <div>
+                        <span class="text-brand-600 font-bold text-sm uppercase tracking-wider">Nosso Balcão</span>
+                        <h2 class="font-serif text-3xl font-bold text-stone-900 mt-1">Gostosuras de Mercearia</h2>
+                        <p class="text-stone-600 text-sm mt-1">Escolha os itens desejados e monte seu pedido para retirar ou receber em casa.</p>
+                    </div>
+
+                    <!-- Search & Filter Controls -->
+                    <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                        <!-- Search input -->
+                        <div class="relative flex-grow sm:w-64">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-stone-400"></i>
+                            <input type="text" id="search-input" oninput="filterProducts()" placeholder="Buscar pão, queijo, bolo..." class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-brand-500 bg-white text-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Filter Pills -->
+                <div class="flex gap-2 overflow-x-auto pb-4 mb-8 hide-scrollbar" id="category-filters">
+                    <button onclick="setCategory('all')" class="cat-btn active bg-brand-600 text-white px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap shadow-sm transition">
+                        Todos os Produtos
+                    </button>
+                    <button onclick="setCategory('paes')" class="cat-btn bg-white text-stone-700 hover:bg-amber-100 px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap border border-stone-200 transition">
+                         Pães & Broas
+                    </button>
+                    <button onclick="setCategory('frios')" class="cat-btn bg-white text-stone-700 hover:bg-amber-100 px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap border border-stone-200 transition">
+                         Queijos & Frios
+                    </button>
+                    <button onclick="setCategory('bolos')" class="cat-btn bg-white text-stone-700 hover:bg-amber-100 px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap border border-stone-200 transition">
+                         Bolos & Doces
+                    </button>
+                    <button onclick="setCategory('salgados')" class="cat-btn bg-white text-stone-700 hover:bg-amber-100 px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap border border-stone-200 transition">
+                         Salgados & Combos
+                    </button>
+                    <button onclick="setCategory('bebidas')" class="cat-btn bg-white text-stone-700 hover:bg-amber-100 px-4 py-2 rounded-xl text-sm font-semibold whitespace-nowrap border border-stone-200 transition">
+                         Bebidas & Vinhos
+                    </button>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="product-grid">
+                    <!-- Dynamic Product Cards populated by JS -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About / Story Section -->
+        <section id="sobre" class="py-16 bg-white border-t border-stone-200 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    
+                    <div class="relative">
+                        <div class="rounded-2xl overflow-hidden shadow-xl border-4 border-amber-100">
+                            <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Fachada e balcão aconchegante da mercearia" class="w-full h-96 object-cover" onerror="this.src='https://placehold.co/800x600/78350f/ffffff?text=Mercearia+do+Seu+Ze'">
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 bg-brand-900 text-amber-100 p-6 rounded-2xl shadow-xl hidden sm:block max-w-xs border border-brand-700">
+                            <p class="font-serif italic text-sm">"Atender bem é saber o nome do cliente e como ele gosta do café."</p>
+                            <span class="block text-xs font-bold text-amber-400 mt-2">— Seu Zé</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-5">
+                        <span class="text-brand-600 font-bold text-sm uppercase tracking-wider">Tradição Curitibana</span>
+                        <h2 class="font-serif text-3xl font-bold text-stone-900">Seu Zé: O amigo do Centro de Curitiba</h2>
+                        <p class="text-stone-600 leading-relaxed text-sm sm:text-base">
+                            Há anos no coração da cidade, a <strong>Mercearia do Seu Zé</strong> nasceu com o propósito de manter acesa a essência das antigas mercearias de bairro. Aqui você não é só mais um número: é recebido com um sorriso sincero, aroma de pão feito na hora e produtos selecionados a dedo.
+                        </p>
+                        <p class="text-stone-600 leading-relaxed text-sm sm:text-base">
+                            Trabalhamos com produtores locais para trazer os melhores queijos coloniais, salames artesanais e ingredientes frescos diariamente para a sua mesa.
+                        </p>
+
+                        <div class="pt-4 grid grid-cols-2 gap-4">
+                            <div class="p-4 bg-amber-50/80 rounded-xl border border-amber-200">
+                                <i class="fa-solid fa-heart text-brand-600 text-xl mb-2"></i>
+                                <h4 class="font-bold text-stone-900 text-sm">Atendimento Afetuoso</h4>
+                                <p class="text-xs text-stone-500 mt-1">Ambiente familiar e atencioso.</p>
+                            </div>
+                            <div class="p-4 bg-amber-50/80 rounded-xl border border-amber-200">
+                                <i class="fa-solid fa-leaf text-emerald-600 text-xl mb-2"></i>
+                                <h4 class="font-bold text-stone-900 text-sm">Produtos Selecionados</h4>
+                                <p class="text-xs text-stone-500 mt-1">Qualidade e frescor garantidos.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Location & Hours Section -->
+        <section id="localizacao" class="py-16 bg-rustic-cream border-t border-stone-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-brand-600 font-bold text-sm uppercase tracking-wider">Venha nos Visitar</span>
+                    <h2 class="font-serif text-3xl font-bold text-stone-900 mt-1">Localização & Horários</h2>
+                    <p class="text-stone-600 text-sm mt-2">Estamos bem no Centro de Curitiba, perto de você!</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    
+                    <!-- Info Card -->
+                    <div class="lg:col-span-5 bg-white p-8 rounded-2xl border border-stone-200 shadow-sm space-y-6 flex flex-col justify-between">
+                        <div class="space-y-6">
+                            <!-- Address -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-brand-100 rounded-xl flex items-center justify-center text-brand-700 shrink-0 mt-1">
+                                    <i class="fa-solid fa-location-dot text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-stone-900">Endereço</h3>
+                                    <p class="text-stone-600 text-sm mt-1">Rua XV de Novembro, Centro<br>Curitiba - PR, 80020-000</p>
+                                    <p class="text-xs text-brand-700 mt-1 font-medium">*Perto da Praça Osório e Calçadão</p>
+                                </div>
+                            </div>
+
+                            <!-- Schedule -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-brand-100 rounded-xl flex items-center justify-center text-brand-700 shrink-0 mt-1">
+                                    <i class="fa-regular fa-clock text-lg"></i>
+                                </div>
+                                <div class="w-full">
+                                    <h3 class="font-bold text-stone-900 mb-2">Horário de Funcionamento</h3>
+                                    <div class="space-y-1.5 text-sm">
+                                        <div class="flex justify-between py-1 border-b border-stone-100">
+                                            <span class="text-stone-600">Segunda a Sexta</span>
+                                            <span class="font-bold text-stone-800">08:00 - 19:00</span>
+                                        </div>
+                                        <div class="flex justify-between py-1 border-b border-stone-100">
+                                            <span class="text-stone-600">Sábado</span>
+                                            <span class="font-bold text-stone-800">08:00 - 12:00</span>
+                                        </div>
+                                        <div class="flex justify-between py-1 text-stone-400">
+                                            <span>Domingo e Feriados</span>
+                                            <span class="font-medium text-rustic-red">Fechado</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- WhatsApp Delivery Info -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-700 shrink-0 mt-1">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-stone-900">Entregas no Centro</h3>
+                                    <p class="text-stone-600 text-sm mt-1">Precisa que entregue no seu escritório ou residência? Mande uma mensagem!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Directions Button -->
+                        <div class="pt-4 border-t border-stone-100">
+                            <a href="https://maps.google.com/?q=Centro+Curitiba+PR" target="_blank" rel="noopener noreferrer" class="w-full bg-stone-900 hover:bg-stone-800 text-white font-medium py-3 rounded-xl flex items-center justify-center gap-2 transition text-sm">
+                                <i class="fa-solid fa-diamond-turn-right text-amber-400"></i> Abrir no Google Maps
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Map Graphic Placeholder / Embed Container -->
+                    <div class="lg:col-span-7 bg-stone-200 rounded-2xl overflow-hidden shadow-inner border border-stone-300 relative min-h-[350px] flex items-center justify-center">
+                        <!-- Simulated Interactive Map styling -->
+                        <iframe 
+                            class="w-full h-full min-h-[380px] border-0" 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3603.223847833076!2d-49.2731!3d-25.4284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce411833d7d45%3A0x6b4bf2d0e74b3e34!2sPra%C3%A7a%20Os%C3%B3rio%20-%20Centro%2C%20Curitiba%20-%20PR!5e0!3m2!1spt-BR!2sbr!4v1680000000000!5m2!1spt-BR!2sbr" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-300 py-12 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-brand-600 rounded-full flex items-center justify-center text-white font-bold">
+                            <i class="fa-solid fa-store text-xs"></i>
+                        </div>
+                        <span class="font-serif text-lg font-bold text-white">Mercearia do Seu Zé</span>
+                    </div>
+                    <p class="text-xs text-stone-400 leading-relaxed">
+                        Pães frescos, fatiados artesanais, bolos fofinhos e a simpatia do Centro de Curitiba.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white text-sm mb-3">Horário</h4>
+                    <ul class="text-xs space-y-1.5 text-stone-400">
+                        <li>Segunda a Sexta: 08:00 às 19:00</li>
+                        <li>Sábado: 08:00 às 12:00</li>
+                        <li>Domingo: Fechado</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white text-sm mb-3">Links Rápidos</h4>
+                    <ul class="text-xs space-y-2 text-stone-400">
+                        <li><a href="#promos" class="hover:text-amber-400 transition">Promoções da Semana</a></li>
+                        <li><a href="#produtos" class="hover:text-amber-400 transition">Catálogo de Produtos</a></li>
+                        <li><a href="#localizacao" class="hover:text-amber-400 transition">Endereço no Centro</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white text-sm mb-3">Contato Directo</h4>
+                    <a href="https://wa.me/5541999999999" target="_blank" class="inline-flex items-center gap-2 text-xs bg-emerald-700 hover:bg-emerald-600 text-white px-3 py-2 rounded-lg transition font-medium">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Seu Zé
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-stone-800 text-center text-xs text-stone-500">
+                <p>&copy; <span id="year"></span> Mercearia do Seu Zé • Todos os direitos reservados. Centro - Curitiba/PR.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart / WhatsApp Drawer Modal -->
+    <div id="cart-modal" class="fixed inset-0 z-50 hidden transition-opacity">
+        <!-- Backdrop -->
+        <div onclick="toggleCartModal()" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+        <!-- Drawer Content -->
+        <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-rustic-cream shadow-2xl flex flex-col justify-between border-l border-amber-200">
+            
+            <!-- Header -->
+            <div class="p-5 bg-brand-900 text-white flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-basket-shopping text-amber-400"></i>
+                    <h3 class="font-serif font-bold text-lg">Sua Lista para o Seu Zé</h3>
+                </div>
+                <button onclick="toggleCartModal()" class="text-amber-200 hover:text-white p-1">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Items List -->
+            <div id="cart-items-container" class="flex-grow p-5 overflow-y-auto space-y-3">
+                <!-- JS will inject cart items -->
+            </div>
+
+            <!-- Footer Summary & Actions -->
+            <div class="p-5 bg-white border-t border-stone-200 space-y-4">
+                <div class="flex justify-between items-center text-lg font-bold text-stone-900">
+                    <span>Total Estimado:</span>
+                    <span id="cart-total-price" class="text-brand-700">R$ 0,00</span>
+                </div>
+                <p class="text-xs text-stone-500">
+                    *Envie seu pedido pelo WhatsApp. O Seu Zé confirmará a disponibilidade e o valor final para entrega/retirada.
+                </p>
+                <button id="send-whatsapp-btn" onclick="sendOrderWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg flex items-center justify-center gap-2 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Enviar Pedido via WhatsApp
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Notification Toast Container -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 hidden bg-stone-900 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 border border-amber-500/30 text-sm">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toast-message">Item adicionado com sucesso!</span>
+    </div>
+
+    <script>
+        // --- Data Models ---
+        const promotions = {
+            1: { // Segunda
+                dayName: 'Segunda-feira',
+                title: ' Segunda do Bolo Caseiro',
+                desc: 'Comece a semana mais doce! Na compra de qualquer bolo caseiro inteiro (Cuca, Fubá ou Cenoura), ganhe 15% de desconto.',
+                badge: '15% OFF em Bolos',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80',
+                priceTag: 'A partir de R$ 18,00'
+            },
+            2: { // Terça
+                dayName: 'Terça-feira',
+                title: ' Terça do Combo Salgado + Refri',
+                desc: '1 Coxinha cremosa ou Empadão quentinho + 1 Guaraná ou Coca caçulinha por um preço especial de lanche da tarde.',
+                badge: 'Combo Lanche R$ 11,90',
+                image: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=600&q=80',
+                priceTag: 'Apenas R$ 11,90'
+            },
+            3: { // Quarta
+                dayName: 'Quarta-feira',
+                title: ' Quarta dos Frios e Queijos',
+                desc: '200g de Muçarela fatiada + 200g de Presunto fatiado na hora com desconto especial para o seu lanche da noite.',
+                badge: 'Combo Frios Especial',
+                image: 'https://images.unsplash.com/photo-1631379578550-7038263db699?auto=format&fit=crop&w=600&q=80',
+                priceTag: 'Apenas R$ 19,90'
+            },
+            4: { // Quinta
+                dayName: 'Quinta-feira',
+                title: ' Quinta do Café & Pão na Chapa',
+                desc: 'Compre 1/2 kg de pão francês quentinho e leve 1 café passado na hora na faixa para viagem!',
+                badge: 'Ganhe 1 Café Passado',
+                image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80',
+                priceTag: 'Oferta do Pão'
+            },
+            5: { // Sexta
+                dayName: 'Sexta-feira',
+                title: ' Sexta do Happy Hour & Tabuinha',
+                desc: 'Combo Tábua do Seu Zé: Salame fatiado (150g) + Queijo Provolone ou Colonial (150g) + Azeitonas temperadas.',
+                badge: 'Tábua Petisco R$ 29,90',
+                image: 'https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=600&q=80',
+                priceTag: 'Apenas R$ 29,90'
+            },
+            6: { // Sábado
+                dayName: 'Sábado',
+                title: ' Sábado de Broa & Café da Manhã',
+                desc: 'Broas artesanais de milho e centeio fresquinhas saindo logo cedo às 08:00 para seu fim de semana!',
+                badge: 'Broas Fresquinhas',
+                image: 'https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=600&q=80',
+                priceTag: 'R$ 7,50 / unidade'
+            },
+            0: { // Domingo (Fechado - Destaque de Segunda)
+                dayName: 'Domingo (Fechado)',
+                title: ' Domingo descansando!',
+                desc: 'A mercearia está fechada no domingo, mas amanhã às 8:00 estaremos de volta com os bolos caseiros quentinhos!',
+                badge: 'Abrimos Segunda 8h',
+                image: 'https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=600&q=80',
+                priceTag: 'Até Segunda!'
+            }
+        };
+
+        const products = [
+            { id: 1, name: 'Pão Francês Quentinho (kg)', category: 'paes', price: 14.90, unit: 'kg', img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80', desc: 'Fresco e crocante, saindo em várias fornadas ao dia.' },
+            { id: 2, name: 'Broa de Milho Colonial', category: 'paes', price: 7.50, unit: 'un', img: 'https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=400&q=80', desc: 'Receita tradicional do interior, bem fofinha.' },
+            { id: 3, name: 'Queijo Colonial Curitibano (200g)', category: 'frios', price: 16.50, unit: '200g', img: 'https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=400&q=80', desc: 'Sabor marcante, fatiado bem fininho na hora.' },
+            { id: 4, name: 'Salame Hamburguês Fatiado (150g)', category: 'frios', price: 14.00, unit: '150g', img: 'https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=400&q=80', desc: 'Perfeito para aperitivos ou sanduíches especiais.' },
+            { id: 5, name: 'Bolo Caseiro de Cuca de Goiabada', category: 'bolos', price: 22.00, unit: 'un', img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80', desc: 'Farofa crocante por cima e recheio generoso.' },
+            { id: 6, name: 'Bolo de Fubá Cremoso', category: 'bolos', price: 18.00, unit: 'un', img: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=400&q=80', desc: 'Aquele gosto de casa de vó para o café da tarde.' },
+            { id: 7, name: 'Coxinha de Frango com Catupiry', category: 'salgados', price: 8.50, unit: 'un', img: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=400&q=80', desc: 'Massa leve e recheio bem temperado.' },
+            { id: 8, name: 'Empadão de Frango com Queijo', category: 'salgados', price: 9.50, unit: 'fatia', img: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=400&q=80', desc: 'Massa podre que derrete na boca.' },
+            { id: 9, name: 'Café Passado na Hora (Copo 200ml)', category: 'bebidas', price: 4.50, unit: 'un', img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400&q=80', desc: 'Café forte e quentinho passado no coador.' },
+            { id: 10, name: 'Vinho Colonial de Mesa (750ml)', category: 'bebidas', price: 28.00, unit: 'garrafa', img: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=400&q=80', desc: 'Vinho suave perfeito para acompanhar a tábua de frios.' },
+            { id: 11, name: 'Presunto Cozido Fatiado (200g)', category: 'frios', price: 9.80, unit: '200g', img: 'https://images.unsplash.com/photo-1631379578550-7038263db699?auto=format&fit=crop&w=400&q=80', desc: 'Fresquinho para seu misto-quente.' },
+            { id: 12, name: 'Queijo Muçarela (200g)', category: 'frios', price: 11.50, unit: '200g', img: 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=400&q=80', desc: 'Derrete fácil e fatiado fininho.' }
+        ];
+
+        // State Management
+        let cart = [];
+        let currentCategory = 'all';
+        let selectedDayPromo = new Date().getDay(); // Default to today
+
+        // --- Core Application Functions ---
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('year').textContent = new Date().getFullYear();
+            checkBusinessStatus();
+            renderDayTabs();
+            renderPromoDisplay(selectedDayPromo);
+            renderProducts(products);
+        });
+
+        // 1. Check if store is open based on hours: Mon-Fri 8-19, Sat 8-12
+        function checkBusinessStatus() {
+            const now = new Date();
+            const day = now.getDay(); // 0 = Sun, 1 = Mon, ... 6 = Sat
+            const hour = now.getHours();
+            const statusBadge = document.getElementById('status-badge');
+
+            let isOpen = false;
+
+            if (day >= 1 && day <= 5) {
+                // Monday to Friday
+                if (hour >= 8 && hour < 19) isOpen = true;
+            } else if (day === 6) {
+                // Saturday
+                if (hour >= 8 && hour < 12) isOpen = true;
+            }
+
+            if (isOpen) {
+                statusBadge.className = 'inline-flex items-center px-2 py-0.5 rounded-full font-bold text-xs bg-emerald-500 text-white shadow-sm';
+                statusBadge.innerHTML = '<span class="w-2 h-2 rounded-full bg-white mr-1.5 animate-pulse"></span> ABERTO AGORA';
+            } else {
+                statusBadge.className = 'inline-flex items-center px-2 py-0.5 rounded-full font-bold text-xs bg-rustic-red text-white shadow-sm';
+                statusBadge.innerHTML = '<span class="w-2 h-2 rounded-full bg-amber-200 mr-1.5"></span> FECHADO AGORA';
+            }
+        }
+
+        // 2. Render Day Tabs for Promos
+        function renderDayTabs() {
+            const tabsContainer = document.getElementById('day-tabs');
+            const dayLabels = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+            const today = new Date().getDay();
+
+            tabsContainer.innerHTML = dayLabels.map((label, idx) => {
+                const isSelected = idx === selectedDayPromo;
+                const isToday = idx === today;
+                
+                return `
+                    <button onclick="selectPromoDay(${idx})" class="px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition flex flex-col items-center gap-0.5 border ${
+                        isSelected 
+                            ? 'bg-brand-600 text-white border-brand-700 shadow-md scale-105' 
+                            : 'bg-stone-50 text-stone-700 border-stone-200 hover:bg-amber-100'
+                    }">
+                        <span>${label} ${isToday ? '⭐' : ''}</span>
+                        <span class="text-[10px] opacity-80">${isToday ? '(Hoje)' : ''}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function selectPromoDay(dayIndex) {
+            selectedDayPromo = dayIndex;
+            renderDayTabs();
+            renderPromoDisplay(dayIndex);
+        }
+
+        function renderPromoDisplay(dayIndex) {
+            const promo = promotions[dayIndex];
+            const display = document.getElementById('promo-display');
+            
+            display.innerHTML = `
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                    <div class="lg:col-span-8 space-y-4">
+                        <div class="inline-flex items-center gap-2 bg-rustic-red text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                            <i class="fa-solid fa-fire"></i> ${promo.badge}
+                        </div>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-900">${promo.title}</h3>
+                        <p class="text-stone-700 text-sm sm:text-base leading-relaxed">${promo.desc}</p>
+                        
+                        <div class="pt-2 flex flex-wrap items-center gap-4">
+                            <span class="text-xl font-extrabold text-brand-700">${promo.priceTag}</span>
+                            <a href="https://wa.me/5541999999999?text=Olá%20Seu%20Zé!%20Gostaria%20de%20aproveitar%20a%20promoção:%20${encodeURIComponent(promo.title)}" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-xl text-sm shadow transition flex items-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Garanta a sua no Whats
+                            </a>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-4">
+                        <img src="${promo.image}" alt="${promo.title}" class="w-full h-48 sm:h-56 object-cover rounded-xl shadow-md border-2 border-white" onerror="this.src='https://placehold.co/600x400/92400e/ffffff?text=Promo+Seu+Ze'">
+                    </div>
+                </div>
+            `;
+        }
+
+        // 3. Render Product Cards
+        function renderProducts(items) {
+            const grid = document.getElementById('product-grid');
+            
+            if (items.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 text-center text-stone-500">
+                        <i class="fa-solid fa-magnifying-glass text-4xl mb-3 text-stone-300"></i>
+                        <p class="text-base font-medium">Nenhum produto encontrado com essa busca.</p>
+                        <button onclick="setCategory('all')" class="mt-3 text-brand-600 underline font-bold text-sm">Ver todos os produtos</button>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = items.map(p => `
+                <div class="bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-44 overflow-hidden bg-stone-100">
+                            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://placehold.co/400x300/d97706/ffffff?text=${encodeURIComponent(p.name)}'">
+                            <span class="absolute top-3 right-3 bg-rustic-cream/90 text-brand-900 font-bold text-xs px-2.5 py-1 rounded-full shadow border border-amber-200">
+                                R$ ${p.price.toFixed(2).replace('.', ',')} / ${p.unit}
+                            </span>
+                        </div>
+                        <div class="p-4 space-y-2">
+                            <h3 class="font-bold text-stone-900 text-base group-hover:text-brand-600 transition">${p.name}</h3>
+                            <p class="text-xs text-stone-500 leading-relaxed">${p.desc}</p>
+                        </div>
+                    </div>
+                    <div class="p-4 pt-0">
+                        <button onclick="addToCart(${p.id})" class="w-full bg-amber-100 hover:bg-brand-600 hover:text-white text-brand-900 font-bold py-2.5 px-4 rounded-xl text-sm transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-plus text-xs"></i> Adicionar à Lista
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 4. Filtering Logic
+        function setCategory(cat) {
+            currentCategory = cat;
+            
+            // Update active state on category buttons
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-600', 'text-white');
+                btn.classList.add('bg-white', 'text-stone-700');
+            });
+            event.currentTarget.classList.remove('bg-white', 'text-stone-700');
+            event.currentTarget.classList.add('bg-brand-600', 'text-white');
+
+            filterProducts();
+        }
+
+        function filterProducts() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            
+            const filtered = products.filter(p => {
+                const matchesCat = currentCategory === 'all' || p.category === currentCategory;
+                const matchesQuery = p.name.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query);
+                return matchesCat && matchesQuery;
+            });
+
+            renderProducts(filtered);
+        }
+
+        // 5. Cart Management
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+
+            updateCartUI();
+            showToast(`"${product.name}" adicionado à lista!`);
+        }
+
+        function updateQuantity(productId, change) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+
+            item.qty += change;
+            if (item.qty <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+            }
+
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            // Count total items
+            const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cart-count').textContent = totalCount;
+
+            // Calculate total price
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            document.getElementById('cart-total-price').textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+
+            // Render items in Modal
+            const container = document.getElementById('cart-items-container');
+            const sendBtn = document.getElementById('send-whatsapp-btn');
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="py-12 text-center text-stone-400">
+                        <i class="fa-solid fa-basket-shopping text-5xl mb-3 text-amber-200"></i>
+                        <p class="font-medium text-stone-600">Sua lista está vazia!</p>
+                        <p class="text-xs text-stone-400 mt-1">Navegue no balcão e adicione os itens que você precisa.</p>
+                    </div>
+                `;
+                sendBtn.disabled = true;
+            } else {
+                sendBtn.disabled = false;
+                container.innerHTML = cart.map(item => `
+                    <div class="bg-white p-3.5 rounded-xl border border-stone-200 flex items-center justify-between gap-3 shadow-sm">
+                        <div class="flex-grow">
+                            <h4 class="font-bold text-stone-900 text-sm">${item.name}</h4>
+                            <p class="text-xs text-stone-500">R$ ${item.price.toFixed(2).replace('.', ',')} / ${item.unit}</p>
+                        </div>
+                        <div class="flex items-center gap-2 bg-stone-100 rounded-lg p-1 border border-stone-200">
+                            <button onclick="updateQuantity(${item.id}, -1)" class="w-7 h-7 bg-white rounded text-stone-700 font-bold hover:bg-stone-200 transition text-xs flex items-center justify-center">-</button>
+                            <span class="font-bold text-xs text-stone-800 px-1">${item.qty}</span>
+                            <button onclick="updateQuantity(${item.id}, 1)" class="w-7 h-7 bg-white rounded text-stone-700 font-bold hover:bg-stone-200 transition text-xs flex items-center justify-center">+</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function sendOrderWhatsApp() {
+            if (cart.length === 0) return;
+
+            let text = "Olá, Seu Zé! Gostaria de fazer o seguinte pedido na mercearia:\n\n";
+            let total = 0;
+
+            cart.forEach(item => {
+                const subtotal = item.price * item.qty;
+                total += subtotal;
+                text += `• ${item.qty}x ${item.name} (R$ ${subtotal.toFixed(2).replace('.', ',')})\n`;
+            });
+
+            text += `\n*Total Estimado: R$ ${total.toFixed(2).replace('.', ',')}*\n`;
+            text += `\nPodem me informar sobre o tempo para entrega/retirada no Centro? Obrigado!`;
+
+            const encodedText = encodeURIComponent(text);
+            window.open(`https://wa.me/5541999999999?text=${encodedText}`, '_blank');
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = message;
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
