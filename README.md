@@ -130,6 +130,8 @@ O projeto também conta com adaptação para diferentes tamanhos de tela, buscan
 
 Antes da finalização da documentação visual do projeto, a equipe elaborou um protótipo de baixa fidelidade para representar a estrutura e organização da página.
 
+![Wireframe de baixa fidelidade](imagens/baixa-fidelidade.png)
+
 O wireframe apresenta a disposição dos principais elementos da interface, como:
 
 * Cabeçalho;
@@ -139,14 +141,6 @@ O wireframe apresenta a disposição dos principais elementos da interface, como
 * Localização;
 * Contatos;
 * Rodapé.
-
-> **Observação:** a imagem do wireframe pode ser adicionada posteriormente nesta seção.
-
-Exemplo:
-
-```markdown
-![Wireframe de baixa fidelidade](caminho/para/wireframe.png)
-```
 
 ---
 
