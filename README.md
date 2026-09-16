@@ -354,11 +354,11 @@ desafio-mercearia-seu-ze/
 │   └── tailwind.config.js
 │
 ├── curriculos/
-│   ├── patryck-geovany-tavares.pdf
-│   ├── marcelo-saraiva.pdf
-│   ├── marcelo-bento-da-luz.pdf
-│   ├── eduardo-ducca-de-melo.pdf
-│   └── quinto-integrante.pdf
+│   ├── Currículo-patryck-geovany.pdf
+│   ├── Curriculo_Marcelo_Saraiva.pdf
+│   ├── 1MARCELOBENTOLUZ.pdf
+│   ├── Eduardo-Ducca-de-Melo.pdf
+│   └── hemanuel_antunes_pdf.pdf
 │
 ├── imagens/
 │   └── ...
