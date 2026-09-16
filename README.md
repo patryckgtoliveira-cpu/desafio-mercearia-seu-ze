@@ -321,22 +321,12 @@ Os perfis dos integrantes podem ser adicionados abaixo para facilitar a avaliaç
 
 # 📄 Currículos
 
-Os currículos completos dos integrantes podem ser disponibilizados no diretório:
+Os currículos completos dos integrantes estão disponíveis na pasta [`curriculos/`](curriculos/) deste repositório.
 
-```text
-curriculos/
-```
-
-Sugestão de organização:
-
-```text
-curriculos/
-├── patryck-geovany-tavares.pdf
-├── marcelo-saraiva.pdf
-├── marcelo-bento-da-luz.pdf
-├── eduardo-ducca-de-melo.pdf
-└── quinto-integrante.pdf
-```
+- [Currículo — Patryck Geovany Tavares de Oliveira](readme/Currículo-atualizado-(2).pdf)
+- [Currículo — Marcelo Saraiva](readme/Curriculo-Marcelo-Saraiva.pdf)
+- [Currículo — Marcelo Bento da Luz](readme/1MARCELOBENTOLUZ.pdf)
+- [Currículo — Eduardo Ducca de Melo](readme/Eduardo-Ducca-de-Melo.pdf)
 
 Os arquivos em PDF são materiais complementares ao mini-currículo apresentado neste README.
 
